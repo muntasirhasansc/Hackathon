@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Deepfakes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <style>
+
+        .quiz-button {
+            background-color: green;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 20px;
+            transition: background-color 0.3s ease;
+            align-items: center;
+    display: inline-flex;  /* This helps to align the content within the button */
+    justify-content: center; /* Centers the content inside the button */
+        }
+
+        .quiz-button:hover {
+            background-color: #57eb13;
+        }
+
+        /* Modal content with new height and width */
+        .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 50px;
+            }
+    
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 800px;  /* Width set to 800px */
+            height: 550px; /* Height set to 600px */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+    
+        h1 {
+            font-size: 1.8rem;
+            color: #ff6f61;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .options label {
+            display: flex;
+            align-items: center;
+            background-color: #f4f7fc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .options label:hover {
+            background-color: #ffdedb;
+        }
+    
+        .options input {
+            margin-right: 10px;
+        }
+    
+        .btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+    
+        .btn:hover {
+            background-color: #e55950;
+        }
+    
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ff6f61;
+        }
+    
+        /* Close button styling */
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 25px;
+            top: 0;
+            padding: 20px;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+<header>
+    <h1>Understanding Deepfakes</h1>
+    <p>What You Need to Know to Protect Yourself from Manipulated Content</p>
+</header>
+<button class="quiz-button" id="quizButton">Start Quiz</button>
+
+<!-- Modal Structure -->
+<div id="quizModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1>Deepfakes: What You Need to Know</h1>
+    <div class="info">
+    <h2>What is a Deepfake?</h2>
+    <p>A deepfake is a type of video or image that has been manipulated using advanced computer technology to make it look like someone is saying or doing something they never actually did. This technology uses artificial intelligence (AI) and machine learning to superimpose someone's face or voice onto another person’s body or speech.</p>
+    <p>While deepfakes can be used for harmless purposes like entertainment, they are also used maliciously for spreading misinformation, damaging reputations, and even scams.</p>
+     
+          <h2>Why Should You Be Concerned About Deepfakes?</h2>
+    <ul>
+    <li><strong>Misinformation:</strong> Used to manipulate public opinion or spread false information.</li>
+    <li><strong>Financial Scams:</strong> Impersonation of trusted figures to trick individuals or businesses.</li>
+    <li><strong>Reputation Damage:</strong> Creating fake videos to harm reputations.</li>
+    <li><strong>Personal Safety:</strong> Impersonation of family or friends in distressing ways.</li>
+    </ul>
+     
+          <h2>How Do Deepfakes Work?</h2>
+    <p>Deepfakes use AI and machine learning to analyze and replicate a person’s facial expressions and voice. This process involves data collection, learning, and manipulation to create realistic but fake content.</p>
+     
+          <h2>How to Spot a Deepfake</h2>
+    <ul>
+    <li><strong>Inconsistent Facial Features:</strong> Look for unnatural eye movements, poor lip-syncing, or stiff expressions.</li>
+    <li><strong>Strange Lighting:</strong> Mismatched or unrealistic shadows and lighting.</li>
+    <li><strong>Odd Skin Texture:</strong> Overly smooth or shiny skin, lack of natural wrinkles.</li>
+    <li><strong>Blurring or Flickering:</strong> Distortions in the background or around the face.</li>
+    <li><strong>Inconsistent Audio:</strong> Speech may not match the lip movements or sound robotic.</li>
+    </ul>
+     
+          <h2>How to Protect Yourself</h2>
+    <ul>
+    <li><strong>Verify the Source:</strong> Check if the video comes from a trusted source.</li>
+    <li><strong>Cross-check Information:</strong> Look for other credible reports about the same content.</li>
+    <li><strong>Use Detection Tools:</strong> Explore tools like Deepware Scanner or Microsoft Video Authenticator.</li>
+    <li><strong>Be Cautious of Scams:</strong> Avoid urgent requests for money or personal details based on suspicious videos.</li>
+    </ul>
+    </div>
+     
+        <h2>Deepfakes Quiz</h2>
+    <form id="quizForm">
+    <div class="question">
+    <p><strong>Question 1:</strong> What is the main technology used to create deepfakes?</p>
+    <div class="options">
+    <label><input type="radio" name="q1" value="1"> Artificial Intelligence and Machine Learning</label>
+    <label><input type="radio" name="q1" value="2"> Video editing software</label>
+    <label><input type="radio" name="q1" value="3"> Manual animation</label>
+    <label><input type="radio" name="q1" value="4"> Simple image filters</label>
+    </div>
+    </div>
+    <div class="question">
+    <p><strong>Question 2:</strong> Which of these is NOT a sign of a deepfake?</p>
+    <div class="options">
+    <label><input type="radio" name="q2" value="1"> Natural facial expressions</label>
+    <label><input type="radio" name="q2" value="2"> Inconsistent shadows</label>
+    <label><input type="radio" name="q2" value="3"> Strange skin texture</label>
+    <label><input type="radio" name="q2" value="4"> Blurring or flickering</label>
+    </div>
+    </div>
+    <div class="question">
+    <p><strong>Question 3:</strong> What should you do if you suspect a deepfake?</p>
+    <div class="options">
+    <label><input type="radio" name="q3" value="1"> Verify the source and cross-check information</label>
+    <label><input type="radio" name="q3" value="2"> Immediately share it with everyone</label>
+    <label><input type="radio" name="q3" value="3"> Ignore it without further action</label>
+    <label><input type="radio" name="q3" value="4"> Assume it is real</label>
+    </div>
+    </div>
+    <button type="submit" class="btn">Submit Answers</button>
+    </form>
+    <div id="result" class="result" style="display: none;"></div>
+    </div>
+    </div>
+     
+    <script>
+      // Correct answers for the quiz
+      const correctAnswers = { q1: "1", q2: "1", q3: "1" };
+     
+      // Show the quiz modal when the button is clicked
+      document.getElementById("quizButton").onclick = () => {
+        document.getElementById("quizModal").style.display = "block";
+      };
+     
+      // Close the modal when the close button is clicked
+      document.querySelector(".close").onclick = () => {
+        document.getElementById("quizModal").style.display = "none";
+      };
+     
+      // Handle form submission and calculate the score
+      document.getElementById("quizForm").onsubmit = function (e) {
+        e.preventDefault();
+        let score = 0;
+        for (const [question, answer] of Object.entries(correctAnswers)) {
+          const selected = document.querySelector(`input[name="${question}"]:checked`);
+          if (selected && selected.value === answer) score++;
+        }
+        const result = document.getElementById("result");
+        result.style.display = "block";
+        result.innerHTML = `You scored ${score} out of 3. ${
+          score === 3 ? "🎉 Excellent!" : score === 2 ? "👍 Good job!" : "😟 Try again!"
+        }`;
+      };
+    </script>
+    
+     
+
+<div class="container">
+    <section>
+        <h2 class="section-title">What is a Deepfake?</h2>
+        <p class="content">A deepfake is a manipulated video or image that uses advanced computer technology to make it look like someone is saying or doing something they never actually did. It uses artificial intelligence (AI) and machine learning to swap faces or voices. While deepfakes are used for entertainment, they can also spread misinformation, damage reputations, or trick people.</p>
+    </section>
+
+    <section>
+        <h2 class="section-title">Why Should You Be Concerned About Deepfakes?</h2>
+        <p class="content">Deepfakes are increasingly used maliciously. Here's why they can be concerning:</p>
+        <ul class="list tips-list">
+            <li><strong>Misinformation:</strong> Deepfakes can manipulate public opinion and influence elections.</li>
+            <li><strong>Financial Scams:</strong> Fraudsters may use deepfakes to impersonate trusted figures and trick people into transferring money.</li>
+            <li><strong>Reputation Damage:</strong> Deepfakes can harm an individual's or company's reputation by making it look like they said or did something harmful.</li>
+            <li><strong>Personal Safety:</strong> Deepfakes may impersonate friends or family in distressing ways, potentially causing emotional or financial harm.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">How Do Deepfakes Work?</h2>
+        <p class="content">Deepfakes use AI techniques, particularly machine learning, to impersonate someone's face or voice. Here's how it works:</p>
+        <ul class="list">
+            <li><strong>Data Collection:</strong> The AI collects numerous videos or images of the person to be impersonated.</li>
+            <li><strong>Learning:</strong> It learns how the person moves, speaks, and expresses emotions.</li>
+            <li><strong>Manipulation:</strong> The AI creates a new video or image with the learned face or voice data, replacing the original one.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">How to Spot a Deepfake</h2>
+        <p class="content">Here are signs to look for when trying to detect a deepfake:</p>
+        <ul class="list tips-list">
+            <li><strong>Inconsistent Facial Features:</strong> Look for unnatural eye movements, mismatched lip syncing, and odd facial expressions.</li>
+            <li><strong>Strange Lighting:</strong> Lighting may not match the rest of the scene or might look unrealistic.</li>
+            <li><strong>Skin Texture:</strong> The skin may look too smooth, plastic-like, or overly glossy.</li>
+            <li><strong>Odd Blurring:</strong> Blurring, flickering, or distortion may occur around the face or during rapid movements.</li>
+            <li><strong>Unnatural Backgrounds:</strong> Backgrounds may glitch, blur, or look poorly rendered.</li>
+            <li><strong>Inconsistent Audio:</strong> The voice might not match lip movements or sound robotic.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">How to Protect Yourself from Deepfake Risks</h2>
+        <p class="content">Take these steps to protect yourself from deepfake-related risks:</p>
+        <ul class="list tips-list">
+            <li><strong>Verify the Source:</strong> Ensure the video comes from a trusted source before believing it.</li>
+            <li><strong>Cross-check Information:</strong> Check multiple sources to confirm the video or news is legitimate.</li>
+            <li><strong>Use Deepfake Detection Tools:</strong> Some tools help detect manipulation, such as Deepware Scanner and Microsoft Video Authenticator.</li>
+            <li><strong>Look for Signs of Editing:</strong> Check for abrupt cuts, strange edits, or unusual background movements.</li>
+            <li><strong>Enable Two-Factor Authentication:</strong> Protect your online accounts with extra security layers like 2FA.</li>
+            <li><strong>Be Cautious of Scams:</strong> Be skeptical of videos requesting money or personal details, especially from unknown sources.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Tools for Detecting Deepfakes</h2>
+        <p class="content">These tools can help detect deepfakes:</p>
+        <ul class="list">
+            <li><strong>Deepware Scanner:</strong> A free tool that scans videos for inconsistencies.</li>
+            <li><strong>Microsoft Video Authenticator:</strong> A tool for journalists to spot manipulated videos.</li>
+            <li><strong>Google’s Content Verification Initiative:</strong> Google helps authenticate digital content and identify manipulations.</li>
+            <li><strong>AI and Blockchain Solutions:</strong> Advanced AI tools and blockchain technologies help verify content authenticity.</li>
+        </ul>
+    </section>
+
+    <section class="important">
+        <p>Stay informed and use the right tools to protect yourself from the risks of deepfakes. Always question the authenticity of suspicious videos, and don't share content that seems misleading.</p>
+    </section>
+
+    <div class="cta-btn" onclick="alert('Stay Safe! Be cautious and always ask for help!')">
+        Stay Safe Online!
+    </div>
+</div>
+
+
+</body>
+</html>

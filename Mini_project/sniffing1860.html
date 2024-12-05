@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sniffing Threats: A Guide for Adults (18–50)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+
+        .quiz-button {
+            background-color: green;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 20px;
+            transition: background-color 0.3s ease;
+            align-items: center;
+    display: inline-flex;  /* This helps to align the content within the button */
+    justify-content: center; /* Centers the content inside the button */
+        }
+
+        .quiz-button:hover {
+            background-color: #57eb13;
+        }
+
+        /* Modal content with new height and width */
+        .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 50px;
+            }
+    
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 800px;  /* Width set to 800px */
+            height: 550px; /* Height set to 600px */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+    
+        h1 {
+            font-size: 1.8rem;
+            color: #ff6f61;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .options label {
+            display: flex;
+            align-items: center;
+            background-color: #f4f7fc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .options label:hover {
+            background-color: #ffdedb;
+        }
+    
+        .options input {
+            margin-right: 10px;
+        }
+    
+        .btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+    
+        .btn:hover {
+            background-color: #e55950;
+        }
+    
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ff6f61;
+        }
+    
+        /* Close button styling */
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 25px;
+            top: 0;
+            padding: 20px;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+<header>
+    <h1>Online Sniffing Threats</h1>
+</header>
+
+<button class="quiz-button" id="quizButton">Start Quiz</button>
+
+<!-- Modal Structure -->
+<div id="quizModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h1>Online Sniffing Threats Quiz</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p><strong>Question 1:</strong> What is online sniffing?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="1"> A cyberattack where hackers intercept and monitor internet traffic to steal sensitive data.</label>
+                    <label><input type="radio" name="q1" value="2"> A method used by network administrators to improve network security.</label>
+                    <label><input type="radio" name="q1" value="3"> A technique used by marketers to track user behavior.</label>
+                    <label><input type="radio" name="q1" value="4"> A way to improve internet speed by monitoring traffic.</label>
+                </div>
+            </div>
+            <div class="question">
+                <p><strong>Question 2:</strong> Which of these is a common risk for adults using public Wi-Fi?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="1"> Hackers using sniffing attacks to steal sensitive data like passwords and financial information.</label>
+                    <label><input type="radio" name="q2" value="2"> The possibility of faster internet speeds and more reliable connections.</label>
+                    <label><input type="radio" name="q2" value="3"> Improved access to private networks and secure browsing.</label>
+                    <label><input type="radio" name="q2" value="4"> Limited access to certain websites due to network restrictions.</label>
+                </div>
+            </div>
+            <div class="question">
+                <p><strong>Question 3:</strong> What does ARP spoofing allow hackers to do?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="1"> Trick devices into thinking their computer is the router, intercepting network traffic.</label>
+                    <label><input type="radio" name="q3" value="2"> Encrypt data to protect it from unauthorized access.</label>
+                    <label><input type="radio" name="q3" value="3"> Create fake websites to steal login credentials.</label>
+                    <label><input type="radio" name="q3" value="4"> Improve Wi-Fi signal strength for faster browsing.</label>
+                </div>
+            </div>
+            <div class="question">
+                <p><strong>Question 4:</strong> What is a key strategy to protect yourself from online sniffing attacks?</p>
+                <div class="options">
+                    <label><input type="radio" name="q4" value="1"> Use a Virtual Private Network (VPN) to encrypt your internet traffic.</label>
+                    <label><input type="radio" name="q4" value="2"> Avoid using HTTPS websites.</label>
+                    <label><input type="radio" name="q4" value="3"> Disable all antivirus software.</label>
+                    <label><input type="radio" name="q4" value="4"> Share your Wi-Fi password only with close friends.</label>
+                </div>
+            </div>
+            <div class="question">
+                <p><strong>Question 5:</strong> What should you do if you suspect that your network is being sniffed?</p>
+                <div class="options">
+                    <label><input type="radio" name="q5" value="1"> Disconnect from the network immediately and change all sensitive account passwords.</label>
+                    <label><input type="radio" name="q5" value="2"> Ignore the warning and continue using the internet as normal.</label>
+                    <label><input type="radio" name="q5" value="3"> Continue browsing, but avoid accessing financial websites.</label>
+                    <label><input type="radio" name="q5" value="4"> Use unencrypted networks to avoid detection.</label>
+                </div>
+            </div>
+            <button type="submit" class="btn">Submit Answers</button>
+        </form>
+        <div id="result" class="result" style="display: none;"></div>
+    </div>
+</div>
+
+<script>
+    // Correct answers for the quiz
+    const correctAnswers = { q1: "1", q2: "1", q3: "1", q4: "1", q5: "1" };
+
+    // Show the quiz modal when the button is clicked
+    document.getElementById("quizButton").onclick = () => {
+        document.getElementById("quizModal").style.display = "block";
+    };
+
+    // Close the modal when the close button is clicked
+    document.querySelector(".close").onclick = () => {
+        document.getElementById("quizModal").style.display = "none";
+    };
+
+    // Handle form submission and calculate the score
+    document.getElementById("quizForm").onsubmit = function (e) {
+        e.preventDefault();
+        let score = 0;
+        for (const [question, answer] of Object.entries(correctAnswers)) {
+            const selected = document.querySelector(`input[name="${question}"]:checked`);
+            if (selected && selected.value === answer) score++;
+        }
+        const result = document.getElementById("result");
+        result.style.display = "block";
+        result.innerHTML = `You scored ${score} out of 5. ${
+            score === 5 ? "🎉 Amazing!" : score >= 3 ? "👍 Great effort!" : "😟 Keep practicing!"
+        }`;
+    };
+</script>
+
+<div class="container">
+    <section>
+        <h2 class="section-title">What Is Online Sniffing?</h2>
+        <p class="content">In today’s hyperconnected world, online sniffing poses a significant cybersecurity risk. Sniffing refers to intercepting or monitoring data as it is transmitted over the internet. While it’s often used by network administrators for legitimate purposes, malicious actors exploit it to steal sensitive information like passwords, financial data, or business details.</p>
+        <p class="content">Online sniffing is a cyberattack where hackers use software or hardware tools to monitor, intercept, and analyze internet traffic. It works by capturing unencrypted data packets transmitted over networks. Think of it as a "cyber peeping Tom" spying on your online activities.</p>
+    </section>
+
+    <section>
+        <h2 class="section-title">Why Should Adults Be Concerned?</h2>
+        <p class="content">Adults, especially those in the 18–50 age group, are prime targets because of their online habits:</p>
+        <ul class="list tips-list">
+            <li>Frequent use of online banking and shopping.</li>
+            <li>Extensive reliance on public Wi-Fi in cafes, airports, and workplaces.</li>
+            <li>Regular communication through email and messaging apps.</li>
+            <li>Handling of sensitive work data or personal documents on shared or unsecured networks.</li>
+        </ul>
+        <p class="content">Data stolen through sniffing can lead to:</p>
+        <ul class="list">
+            <li><strong>Financial theft:</strong> Access to bank accounts or credit card fraud.</li>
+            <li><strong>Identity theft:</strong> Misuse of personal data for fraudulent activities.</li>
+            <li><strong>Corporate espionage:</strong> Leaked confidential information from businesses.</li>
+            <li><strong>Privacy invasion:</strong> Monitoring of emails, chats, and browsing activities.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Types of Sniffing Attacks</h2>
+        <ul class="list">
+            <li><strong>Packet Sniffing:</strong> Hackers capture raw data packets transmitted over a network.</li>
+            <li><strong>Wireless Sniffing:</strong> Exploits vulnerabilities in public or poorly secured Wi-Fi networks.</li>
+            <li><strong>ARP Spoofing:</strong> Hackers trick devices into thinking their computer is the router, intercepting all network traffic.</li>
+            <li><strong>Man-in-the-Middle (MITM) Attacks:</strong> The attacker positions themselves between two communicating devices, intercepting and modifying their communication in real time.</li>
+            <li><strong>Session Hijacking:</strong> Hackers steal session cookies from your browser to impersonate you on a website.</li>
+            <li><strong>SSL Stripping:</strong> Converts secure HTTPS connections into unsecured HTTP connections.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">How to Protect Yourself from Online Sniffing</h2>
+        <ul class="list tips-list">
+            <li><strong>Encrypt Your Data:</strong> Always use websites with HTTPS and encrypted messaging apps like Signal or WhatsApp.</li>
+            <li><strong>Use a VPN:</strong> A VPN encrypts all traffic, preventing sniffers from intercepting your data.</li>
+            <li><strong>Secure Your Wi-Fi:</strong> Set a strong password and use WPA3 encryption.</li>
+            <li><strong>Protect Your Browser:</strong> Disable autofill features and regularly clear cookies.</li>
+            <li><strong>Enhance Password Security:</strong> Use a password manager and enable two-factor authentication (2FA).</li>
+            <li><strong>Monitor Your Devices:</strong> Install and update antivirus software and scan regularly for malware.</li>
+            <li><strong>Be Cautious with Emails:</strong> Verify sender addresses and avoid clicking suspicious links.</li>
+            <li><strong>Avoid Untrusted Networks:</strong> Don’t connect to "free" or untrusted Wi-Fi hotspots.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Recognizing Sniffing Threats</h2>
+        <ul class="list">
+            <li><strong>Slow Internet Speeds:</strong> A hacker sniffing your network can reduce speeds.</li>
+            <li><strong>Unusual Pop-Ups:</strong> These could indicate malware on your device.</li>
+            <li><strong>Frequent Logouts:</strong> Being logged out of accounts unexpectedly may be a sign of session hijacking.</li>
+            <li><strong>Unauthorized Account Activity:</strong> Check for unusual logins or transactions.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">What to Do If You Suspect Sniffing</h2>
+        <ul class="list">
+            <li><strong>Disconnect from the Network:</strong> Turn off Wi-Fi or unplug your internet connection.</li>
+            <li><strong>Update Passwords:</strong> Change passwords for all sensitive accounts.</li>
+            <li><strong>Run Antivirus Software:</strong> Scan and remove potential malware.</li>
+            <li><strong>Check Network Traffic:</strong> Use tools like Wireshark to analyze suspicious traffic.</li>
+            <li><strong>Enable a VPN:</strong> Use a VPN to secure all future connections.</li>
+        </ul>
+    </section>
+
+    <div class="cta">
+        <p class="content">Stay informed and take proactive steps to protect yourself from online sniffing threats!</p>
+    </div>
+    <div class="cta-btn" onclick="alert('Stay Safe! Be cautious and always ask for help!')">
+        Stay Safe Online!
+    </div>
+</div>
+
+
+
+</body>
+</html>

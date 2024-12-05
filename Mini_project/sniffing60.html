@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Guide on Online Sniffing Threats for Seniors (60+)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+
+        .quiz-button {
+            background-color: green;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 20px;
+            transition: background-color 0.3s ease;
+            align-items: center;
+    display: inline-flex;  /* This helps to align the content within the button */
+    justify-content: center; /* Centers the content inside the button */
+        }
+
+        .quiz-button:hover {
+            background-color: #57eb13;
+        }
+
+        /* Modal content with new height and width */
+        .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 50px;
+            }
+    
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 800px;  /* Width set to 800px */
+            height: 550px; /* Height set to 600px */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+    
+        h1 {
+            font-size: 1.8rem;
+            color: #ff6f61;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .options label {
+            display: flex;
+            align-items: center;
+            background-color: #f4f7fc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .options label:hover {
+            background-color: #ffdedb;
+        }
+    
+        .options input {
+            margin-right: 10px;
+        }
+    
+        .btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+    
+        .btn:hover {
+            background-color: #e55950;
+        }
+    
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ff6f61;
+        }
+    
+        /* Close button styling */
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 25px;
+            top: 0;
+            padding: 20px;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+<header>
+    <h1>Online Sniffing Threats for Seniors (60+)</h1>
+</header>
+<button class="quiz-button" id="quizButton">Start Quiz</button>
+
+<div class="container">
+    <section>
+        <h2 class="section-title">What Is Online Sniffing?</h2>
+        <p class="content">The internet is an amazing place, but just like in the real world, there are risks. One of the online dangers is something called online sniffing, which is when bad actors (hackers) secretly monitor what you're doing online to steal personal information like passwords, bank details, or sensitive messages.</p>
+        <p class="content">Think of online sniffing as someone secretly listening in on your phone call or watching your mail as it’s being delivered. Hackers use sniffing to "eavesdrop" on your internet activity to steal valuable information.</p>
+        <ul class="list">
+            <li>Passwords for your email, social media, or banking accounts.</li>
+            <li>Credit card numbers when you shop online.</li>
+            <li>Personal messages or data you send on the internet.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Why Should You Care?</h2>
+        <p class="content">Hackers often target older adults because they may:</p>
+        <ul class="list tips-list">
+            <li>Be less familiar with online security tools.</li>
+            <li>Use less secure devices or public Wi-Fi networks.</li>
+        </ul>
+        <p class="content">If your information is stolen, it can lead to:</p>
+        <ul class="list tips-list">
+            <li><strong>Financial loss:</strong> Money stolen from your bank accounts.</li>
+            <li><strong>Identity theft:</strong> Hackers pretending to be you to open accounts or take loans.</li>
+            <li><strong>Loss of privacy:</strong> Your private communications could be exposed.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">How Does Online Sniffing Happen?</h2>
+        <ul class="list">
+            <li><strong>Unsecured Websites:</strong> Hackers watch data sent over insecure websites (websites that don’t start with "https://").</li>
+            <li><strong>Public Wi-Fi Networks:</strong> Wi-Fi in coffee shops, libraries, or hotels can be easily hacked.</li>
+            <li><strong>Malware (Bad Software):</strong> Hackers trick you into installing harmful software on your computer or phone that monitors your activity.</li>
+            <li><strong>Fake Websites:</strong> These websites look real but are set up by hackers to steal your information.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Simple Tips to Stay Safe Online</h2>
+        <ul class="list tips-list">
+            <li><strong>Only Use Secure Websites:</strong> Look for a lock icon in your browser bar or "https://" in the website address before entering personal information.</li>
+            <li><strong>Avoid Public Wi-Fi:</strong> Don’t connect to Wi-Fi in places like airports, cafes, or hotels unless absolutely necessary. If you must, avoid entering sensitive information.</li>
+            <li><strong>Use Strong Passwords:</strong> Create passwords that are hard to guess (e.g., include a mix of letters, numbers, and symbols).</li>
+            <li><strong>Keep Your Software Updated:</strong> Update your phone, computer, and antivirus software regularly.</li>
+            <li><strong>Be Wary of Suspicious Emails:</strong> Don’t reply or click on links in emails asking for personal information.</li>
+            <li><strong>Install Antivirus Software:</strong> Use trusted antivirus programs to protect your device.</li>
+            <li><strong>Use a VPN:</strong> A VPN encrypts your online activity and keeps it private.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">How to Spot Online Sniffing Threats</h2>
+        <ul class="list">
+            <li><strong>Strange Pop-Ups or Ads:</strong> These could indicate malware is installed on your device.</li>
+            <li><strong>Slow Internet Speeds:</strong> This may mean someone is intercepting your data.</li>
+            <li><strong>Unusual Account Activity:</strong> Check your bank or email accounts for suspicious activity.</li>
+            <li><strong>Frequent Logouts:</strong> Being logged out of your accounts unexpectedly could be a warning sign.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">What to Do If You Suspect a Problem</h2>
+        <ul class="list">
+            <li><strong>Disconnect From the Internet:</strong> Turn off Wi-Fi or unplug your internet connection.</li>
+            <li><strong>Run an Antivirus Scan:</strong> Use your antivirus software to check for malware.</li>
+            <li><strong>Change Your Passwords:</strong> Update passwords for sensitive accounts like email or banking.</li>
+            <li><strong>Seek Help:</strong> If you're unsure what to do, ask a trusted person for assistance.</li>
+        </ul>
+    </section>
+
+    <div class="cta">
+        <p class="content">Stay informed and take steps to protect yourself from online sniffing threats!</p>
+    </div>
+
+    <div class="cta-btn" onclick="alert('Stay Safe! Be cautious and always ask for help!')">
+        Stay Safe Online!
+    </div>
+</div>
+
+
+</body>
+</html>

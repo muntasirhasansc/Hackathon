@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phishing Scam Awareness</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+
+        .quiz-button {
+            background-color: green;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 20px;
+            transition: background-color 0.3s ease;
+            align-items: center;
+    display: inline-flex;  /* This helps to align the content within the button */
+    justify-content: center; /* Centers the content inside the button */
+        }
+
+        .quiz-button:hover {
+            background-color: #57eb13;
+        }
+
+        /* Modal content with new height and width */
+        .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 50px;
+            }
+    
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 800px;  /* Width set to 800px */
+            height: 550px; /* Height set to 600px */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+    
+        h1 {
+            font-size: 1.8rem;
+            color: #ff6f61;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .options label {
+            display: flex;
+            align-items: center;
+            background-color: #f4f7fc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .options label:hover {
+            background-color: #ffdedb;
+        }
+    
+        .options input {
+            margin-right: 10px;
+        }
+    
+        .btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+    
+        .btn:hover {
+            background-color: #e55950;
+        }
+    
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ff6f61;
+        }
+    
+        /* Close button styling */
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 25px;
+            top: 0;
+            padding: 20px;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+<header>
+    <h1>Phishing Scam Awareness</h1>
+    <p>Learn how to recognize, avoid, and protect yourself from phishing scams.</p>
+</header>
+<button class="quiz-button" id="quizButton">Start Quiz</button>
+
+<div class="container">
+    <section>
+        <h2 class="section-title">What is Phishing?</h2>
+        <p class="content">Phishing is a trick where scammers try to steal your personal information, like your bank account details or passwords, by pretending to be someone you trust. They may send fake emails, messages, or phone calls that look like they come from companies, friends, or even government organizations. The goal of a phishing scam is to fool you into giving them information that they can use to steal money from your bank account or commit fraud using your identity.</p>
+    </section>
+
+    <section>
+        <h2 class="section-title">How Do Phishing Scams Work?</h2>
+        <p class="content">Phishing scams can happen in many ways. Here’s how they typically work:</p>
+        <ul class="list">
+            <li><strong>Fake Emails or Messages:</strong> Scammers may send you an email or message that looks like it’s from your bank, a store you shop at, or even a friend or family member. They may ask you to click on a link or open an attachment. The link may look real, but it’s actually a scam.</li>
+            <li><strong>Fake Phone Calls:</strong> Some scammers might call you pretending to be from your bank, the government, or another trusted organization. They may ask for your personal information, like your Social Security number, bank account details, or credit card number.</li>
+            <li><strong>Fake Websites:</strong> Phishers create fake websites that look like real ones. They might ask you to log in or fill in forms that ask for personal details like your credit card number or password.</li>
+            <li><strong>Urgency or Threats:</strong> Many phishing scams will make you feel like you need to act quickly. They may say your bank account will be locked, or you might lose an important service if you don’t respond. This is done to pressure you into giving your information.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">How to Spot Phishing Scams</h2>
+        <p class="content">Here are some red flags to look out for when identifying phishing scams:</p>
+        <ul class="list">
+            <li><strong>Check the Sender’s Email Address:</strong> The email may look like it comes from a trusted company, but the email address may be fake. Look out for small differences in the email address, like extra letters or misspellings.</li>
+            <li><strong>Look for Spelling and Grammar Mistakes:</strong> Many phishing messages have spelling or grammar mistakes. A professional company would usually send messages that are well-written and error-free.</li>
+            <li><strong>Suspicious Links:</strong> Phishing emails often contain links that take you to fake websites. Always check the web address carefully before clicking any links.</li>
+            <li><strong>Requests for Personal Information:</strong> Real companies will never ask you to share sensitive information (like your bank account number or password) via email, text, or phone. If you’re asked for these, it’s a scam.</li>
+            <li><strong>Unexpected Attachments:</strong> Be cautious about opening attachments in emails you were not expecting, especially if they’re from unknown senders. They may contain viruses or programs that steal your information.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">What to Do if You Receive a Phishing Attempt</h2>
+        <div class="important">
+            <p>If you receive a phishing attempt, here’s what you should do:</p>
+            <ul class="list">
+                <li>Do not respond or click on any links or open attachments.</li>
+                <li>Verify the information by contacting the company directly using trusted phone numbers or emails.</li>
+                <li>Report the scam to your bank, the impersonated company, or the relevant authorities.</li>
+                <li>Use strong, unique passwords for all your online accounts and change them regularly.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">How to Protect Yourself from Phishing</h2>
+        <ul class="list">
+            <li><strong>Be Skeptical:</strong> Always be cautious when you receive unsolicited messages that ask for personal information or money.</li>
+            <li><strong>Use Anti-virus Software:</strong> Install trusted anti-virus software on your devices and keep it up to date.</li>
+            <li><strong>Keep Your Software Updated:</strong> Regularly update your software to fix security vulnerabilities.</li>
+            <li><strong>Check Bank Statements:</strong> Regularly check your bank statements for any suspicious activity.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Important Numbers and Websites to Know</h2>
+        <ul class="list">
+            <li><strong>FTC:</strong> Call 1-877-FTC-HELP (1-877-382-4357) or visit <a href="https://www.ftc.gov" target="_blank" style="color: #ff6f61;">www.ftc.gov</a> to report phishing.</li>
+            <li><strong>Your Bank’s Customer Service:</strong> Always use the phone number listed on your bank statements or their official website to contact them directly.</li>
+        </ul>
+    </section>
+
+    <div class="cta-btn" onclick="alert('Stay Safe! Be cautious and always ask for help!')">
+        Stay Safe Online!
+    </div>
+</div>
+
+
+
+</body>
+</html>

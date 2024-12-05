@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Sniffing Threats</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+
+        .quiz-button {
+            background-color: green;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 20px;
+            transition: background-color 0.3s ease;
+            align-items: center;
+    display: inline-flex;  /* This helps to align the content within the button */
+    justify-content: center; /* Centers the content inside the button */
+        }
+
+        .quiz-button:hover {
+            background-color: #57eb13;
+        }
+
+        /* Modal content with new height and width */
+        .modal {
+                display: none;
+                position: fixed;
+                z-index: 1;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.4);
+                padding-top: 50px;
+            }
+    
+        .modal-content {
+            background-color: #ffffff;
+            margin: auto;
+            padding: 20px;
+            border-radius: 12px;
+            width: 800px;  /* Width set to 800px */
+            height: 550px; /* Height set to 600px */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+    
+        h1 {
+            font-size: 1.8rem;
+            color: #ff6f61;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    
+        .question {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+    
+        .options label {
+            display: flex;
+            align-items: center;
+            background-color: #f4f7fc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+    
+        .options label:hover {
+            background-color: #ffdedb;
+        }
+    
+        .options input {
+            margin-right: 10px;
+        }
+    
+        .btn {
+            background-color: #ff6f61;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+    
+        .btn:hover {
+            background-color: #e55950;
+        }
+    
+        .result {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: #ff6f61;
+        }
+    
+        /* Close button styling */
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 25px;
+            top: 0;
+            padding: 20px;
+        }
+    
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+
+<header>
+    <img src="./icon/homeIcon.svg" alt="home icon" width="50px" height="50px">
+    <h1>Online Sniffing Threats</h1>
+</header>
+
+<button class="quiz-button" id="quizButton">Start Quiz</button>
+
+
+
+
+
+
+
+<!-- Modal Structure -->
+<div id="sniffingQuizModal" class="modal">
+    <div class="modal-content">
+    <span class="close">&times;</span>
+    <h1>Online Sniffing Threats: Protect Yourself</h1>
+     
+         <form id="sniffingQuizForm">
+    <!-- Quiz Question 1 -->
+    <div class="question">
+    <p><strong>Question 1:</strong> What is online sniffing?</p>
+    <div class="options">
+    <label><input type="radio" name="q1" value="1"> A scam to steal your personal information through the internet.</label>
+    <label><input type="radio" name="q1" value="2"> A tool used to improve internet speeds.</label>
+    </div>
+    </div>
+    <!-- Quiz Question 2 -->
+    <div class="question">
+    <p><strong>Question 2:</strong> Which of these is a common online sniffing threat?</p>
+    <div class="options">
+    <label><input type="radio" name="q2" value="1"> Public Wi-Fi sniffing to steal data.</label>
+    <label><input type="radio" name="q2" value="2"> Secure browsing on private networks.</label>
+    </div>
+    </div>
+    <!-- Quiz Question 3 -->
+    <div class="question">
+    <p><strong>Question 3:</strong> What should you do if you think you’ve been targeted by sniffing?</p>
+    <div class="options">
+    <label><input type="radio" name="q3" value="1"> Change your passwords and report to a trusted adult.</label>
+    <label><input type="radio" name="q3" value="2"> Ignore the situation and continue using your device.</label>
+    </div>
+    </div>
+    <button type="submit" class="btn">Submit Answers</button>
+    </form>
+    <div id="result" class="result" style="display: none;"></div>
+    </div>
+    </div>
+     
+    <script>
+      // Correct answers for the quiz
+      const correctAnswers = { q1: "1", q2: "1", q3: "1" };
+     
+      // Show the quiz modal when the button is clicked
+      document.getElementById("quizButton").onclick = () => {
+        document.getElementById("sniffingQuizModal").style.display = "block";
+      };
+     
+      // Close the modal when the close button is clicked
+      document.querySelector(".close").onclick = () => {
+        document.getElementById("sniffingQuizModal").style.display = "none";
+      };
+     
+      // Handle form submission and calculate the score
+      document.getElementById("sniffingQuizForm").onsubmit = function (e) {
+        e.preventDefault();
+        let score = 0;
+        for (const [question, answer] of Object.entries(correctAnswers)) {
+          const selected = document.querySelector(`input[name="${question}"]:checked`);
+          if (selected && selected.value === answer) score++;
+        }
+        const result = document.getElementById("result");
+        result.style.display = "block";
+        result.innerHTML = `You scored ${score} out of 3. ${
+          score === 3 ? "🎉 Excellent!" : score === 2 ? "👍 Good job!" : "😟 Try again!"
+        }`;
+      };
+    </script>
+
+
+<div class="container">
+    <section>
+        <h2 class="section-title">What Is Online Sniffing?</h2>
+        <p class="content">The internet is an amazing place to explore, learn, and connect with others. However, it’s also important to be aware of threats like online sniffing—a term used to describe how cybercriminals secretly collect information about your online activities. This report will help you understand online sniffing, recognize its dangers, and learn how to stay safe.</p>
+        <p class="content">Online sniffing is a type of cyber spying where hackers or bad actors use special tools to "sniff" or track data being transmitted over the internet. Think of it like someone eavesdropping on a private conversation.</p>
+        <p class="content"><strong>What hackers steal:</strong> Passwords, personal information, photos and videos, or bank details (if shared devices are used).</p>
+    </section>
+
+    <section>
+        <h2 class="section-title">Why Are Children at Risk?</h2>
+        <p class="content">Children and teenagers often use the internet for:</p>
+        <ul class="list tips-list">
+            <li>Social media</li>
+            <li>Online gaming</li>
+            <li>Streaming videos</li>
+            <li>Chatting with friends</li>
+            <li>School projects</li>
+        </ul>
+        <p class="content">Hackers target children because they might:</p>
+        <ul class="list tips-list">
+            <li>Use weak passwords or share information openly.</li>
+            <li>Not recognize phishing links or fake websites.</li>
+            <li>Use public Wi-Fi, making their devices vulnerable.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Types of Sniffing Threats You Should Know</h2>
+        <ul class="list">
+            <li><strong>Public Wi-Fi Sniffing:</strong> Hackers steal data from unsecured Wi-Fi networks.</li>
+            <li><strong>Phishing Links:</strong> Fake emails or messages trick you into giving away personal details.</li>
+            <li><strong>Fake Apps or Games:</strong> Some free apps contain malware that spies on your device.</li>
+            <li><strong>Social Engineering:</strong> Hackers pretend to be someone you trust to steal information.</li>
+            <li><strong>Malware-infected Devices:</strong> Malware collects your data silently.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">How You Should Stay Safe</h2>
+        <ul class="list tips-list">
+            <li><strong>Protect Your Accounts:</strong> Use strong passwords with letters, numbers, and special characters. Never share your passwords. Enable two-factor authentication (2FA).</li>
+            <li><strong>Be Careful on Public Wi-Fi:</strong> Avoid sensitive activities on public Wi-Fi. Use a VPN for secure browsing.</li>
+            <li><strong>Spot Phishing Links:</strong> Don’t click on suspicious links in emails or pop-ups. Check for spelling errors and strange sender addresses.</li>
+            <li><strong>Install Apps Safely:</strong> Download apps only from official app stores. Read reviews before downloading.</li>
+            <li><strong>Keep Devices Updated:</strong> Install updates for apps and operating systems.</li>
+            <li><strong>Avoid Oversharing Online:</strong> Don’t share personal details like your name, address, or phone number. Keep profiles private.</li>
+            <li><strong>Use Antivirus Software:</strong> Install and regularly update antivirus software. Scan your device for malware.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Recognizing Sniffing Threats</h2>
+        <ul class="list">
+            <li>Your device is slower than usual.</li>
+            <li>You see unusual pop-ups or redirects.</li>
+            <li>Friends report strange messages from your account.</li>
+            <li>You’re logged out of accounts unexpectedly.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">What Should You Do If You Think You’ve Been Targeted?</h2>
+        <ul class="list">
+            <li>Tell your parent or teacher immediately.</li>
+            <li>Change your passwords.</li>
+            <li>Disconnect from public Wi-Fi.</li>
+            <li>Run an antivirus scan.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Best Practices to Keep Yourself Safe</h2>
+        <ul class="list">
+            <li>Allow parents to supervise your online activity.</li>
+            <li>Learn about online privacy.</li>
+            <li>Limit screen time to reduce exposure to risks.</li>
+            <li>Talk to someone if you suspect anything suspicious.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Fun Tools to Learn and Stay Secure</h2>
+        <ul class="list">
+            <li><strong>Games on Cybersecurity:</strong> Websites like NetSmartz teach you about online threats through fun activities.</li>
+            <li><strong>Password Generators:</strong> Use tools to create strong passwords.</li>
+            <li><strong>Fake vs. Real Spotting Games:</strong> Learn to identify phishing scams with interactive quizzes.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2 class="section-title">Quick Recap</h2>
+        <p class="content">Think before you click. Keep passwords secret. Avoid oversharing online. Always report anything suspicious to an adult.</p>
+    </section>
+
+
+</div>
+
+
+
+</body>
+</html>
