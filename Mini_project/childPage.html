@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive IT Safety</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Game Area */
+        .game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Character */
+        .character {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            width: 250px;
+            height: 500px;
+        }
+
+        .inner_txt {
+            width: 500px;
+            word-wrap: break-word;
+            /* Ensures long words break to next line if necessary */
+            overflow-wrap: break-word;
+            /* This is a more modern alternative */
+        }
+
+        /* Speech Bubble */
+        .speech-bubble {
+            position: absolute;
+            top: 20%;
+            left: 25%;
+            background-color: #49796b;
+            border: 3px solid #8b5a2b;
+            border-radius: 15px;
+            padding: 30px;
+            font-size: 1.6rem;
+            line-height: 1.5;
+            /*color: #333;*/
+            color: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            height: auto;
+            max-width: 500px;
+            width: auto;
+            /* Set the width to 200px */
+
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Speech Bubble Triangle */
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 10%;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 20px 20px 0 20px;
+            border-color: #49796b transparent transparent transparent;
+        }
+
+        .speech-bubble:before {
+            content: '';
+            position: absolute;
+            bottom: -23px;
+            left: 10%;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 23px 23px 0 23px;
+            border-color: #8b5a2b transparent transparent transparent;
+        }
+
+        .imageInformation img {
+            position: absolute;
+            top: 25%;
+            right: 10%;
+            z-index: 1;
+            /* border: 5px solid red; */
+            width: 450px;
+            height: auto;
+        }
+
+        .noselect {
+            -webkit-user-select: none;
+            /* Safari */
+            -ms-user-select: none;
+            /* IE 10 and IE 11 */
+            user-select: none;
+            /* Standard syntax */
+        }
+
+        /* Responsive Design */
+    @media screen and (max-width: 768px) {
+        .game-container {
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .imageInformation img {
+            position: relative;
+            top: 0;
+            right: 0;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .character {
+            margin: 20px 0;
+        }
+
+        .speech-bubble {
+            margin: 10px auto;
+            font-size: 1rem;
+            padding: 15px;
+        }
+
+        .speech-bubble:after,
+        .speech-bubble:before {
+            display: none;
+        }
+    }
+    </style>
+
+
+</head>
+
+<body>
+
+
+
+    <div class="game-container">
+        <img src="Character/c1.png" alt="Character" class="character noselect" id="charImg">
+        <div class="speech-bubble" id="speech-bubble">
+            <div class="inner_txt noselect">
+                Hi there! I’m here to teach you about staying safe online. Tap on this bubble to start!
+            </div>
+        </div>
+    </div>
+    <div class="imageInformation">
+        <img src="./ImageInfo/book.png" alt="information" id="imgInfo">
+    </div>
+    <script>
+        // Dialogue messages
+        const dialogues = [
+            "",
+            "Do you know what \"IT\" stands for?",
+            "IT means \"Information Technology.\" It’s all about computers and the internet!",
+            "We use IT for emails, websites, and more. But there are risks too.",
+            "One risk is \"phishing.\" It's like a trick to steal info..",
+            "Yes, but instead of catching fish, they try to catch your secrets!",
+            "They send fake emails or links to trick you.",
+            "Look for bad spelling, strange links, or unknown senders.",
+            "Don’t click the link! Just delete the email.",
+            "Another risk is \"malware\"",
+            "Malware is bad software that can harm your device.",
+            "It can hide in downloads, emails, or websites.",
+            "It can spread and break things on your device.",
+            "Your computer might slow down, or files could disappear.",
+            "Don’t open unknown downloads or click on strange links",
+            "Only trust apps from trusted sources like official stores."
+        ];
+
+        const imgList = [
+            '',
+            'ImageInfo/problem.png',
+            'ImageInfo/local-area.png',
+            'ImageInfo/caution.png',
+            'ImageInfo/alert.png',
+            'ImageInfo/cybercrime.png',
+            'Character/fakeEmail.webp',
+            'ImageInfo/anonymity.png',
+            'ImageInfo/no.png',
+            'ImageInfo/website.png',
+            'ImageInfo/caution.png',
+            'ImageInfo/ninja.png',
+            'ImageInfo/punch.png',
+            'ImageInfo/turtle.png',
+            'ImageInfo/no.png',
+            'ImageInfo/playstore.png',
+        ]
+
+        let currentDialogueIndex = 0;
+        let currentImageIndex = 0;
+
+        // DOM element
+        const speechBubble = document.getElementById('speech-bubble');
+        const imgInfo = document.getElementById('imgInfo');
+
+        // Update dialogue on bubble click/tap
+        speechBubble.addEventListener('click', () => {
+            if (currentDialogueIndex < dialogues.length - 1) {
+                currentDialogueIndex++;
+                speechBubble.textContent = dialogues[currentDialogueIndex];
+                imgInfo.src = imgList[currentDialogueIndex]
+
+            } else {
+                speechBubble.textContent = "You've learned all the basics! Bye for now!";
+
+                speechBubble.style.pointerEvents = 'none'; // Disable further clicks
+                imgInfo.src = "ImageInfo/well-done.png";
+            }
+
+
+
+            const images = ['Character/c1.png', 'Character/c2.png', 'Character/c3.png']; // Replace with your image paths
+            const imgElement = document.getElementById('charImg');
+
+
+            //imgElement.style.opacity = 0; // Fade out the current image
+            currentImageIndex = currentImageIndex + 1;
+            if (currentImageIndex > 2) {
+                currentImageIndex = 0;
+            }
+            imgElement.src = images[currentImageIndex];
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
